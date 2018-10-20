@@ -20,20 +20,10 @@ $calDate = time();
     $calDate = strtotime('+1 month', $calDate);    
 }
 
-
     //date(第一引数, 第二引数)は第二引数の時間を第一引数で指定したフォーマット(月とか年とか日とか分とか)で出力できる
     $Year = date('Y', $calDate);
     $Month = date('n', $calDate);
-    
-
-
-
-
-
-
     $CAL = set_calender($Year, $Month);
-    
-
 function set_calender($year, $month){
 // 月末日を取得
 //0は前月の末尾という意味
@@ -107,13 +97,13 @@ return $calendar;
   });
 });
           </script>
-          <script type="text/javascript">
-          //ここはなに？
+          <!-- <script type="text/javascript">
+          ここはなに？
           function send(){
               document.form1.submit();
               document.form2.submit();
           }
-          </script>
+          </script> -->
         <style type="text/css">
 table {
     width: 100%;
@@ -172,6 +162,7 @@ table td {
     <input type="hidden" name="calDate" value="<?php echo $calDate ?>"><button class="migi" type="submit" name="after">次月</button></form>
 <br>
 <br>
+<form name="form2" action="dropdown3.php" method="post">
 <table>
     <tr>
         <th id="red">日</th>
@@ -195,37 +186,41 @@ table td {
         // $intime[$value['day']] = "intime".$value['day'];
         // $outtime[$value['day']] = "outtime".$value['day'];
         // $workDay = $value['day'];
+        
 
         ?>
-            <button class="menu"> <?php echo $value['day']; ?></button>
+            <button type="button" class="menu"> <?php echo $value['day']; ?></button>
         <ul class="dakoku">
-            <form name="form2" action="dropdown3.php" method="post">
-            <!-- input[]に入れるんだけどどうやって取り出せばいいか考えるね -->
-            <!-- input[0]output[0]~input[30]output[30]をfor文で取り出し、各々で計算する -->
+            
+            <!-- intime[]に入れるんだけどどうやって取り出せばいいか考えるね -->
+            <!-- intime[1]outtime[1]~intime[31]outtime[31]をfor文で取り出し、各々で計算する -->
             <!-- 前で初期化しなきゃダメだな -->
-                <input type="time" name="<?php $intime[] ?>" min="06:00"> ~ <input type="time" name="<?php $outtime[] ?>" min="06:00">
-            </form>
+            <input type="time" name="intime[]" min="06:00" > ~ <input type="time" name="outtime[]" min="06:00" >
+            <!-- </form> -->
         </ul>
-
+        
        <?php $cnt++;  ?>
         </td>
  
     <?php if ($cnt == 7): ?>
     </tr>
+    
     <tr>
     <?php $cnt = 0; ?>
     <?php endif; ?>
  
     <?php endforeach; ?>
     </tr>
-
+    
 </table>
+
 <p class="mannaka">最後に、片道の交通費とあなたの時給を入力してね。</p>
-    <form name="form1" action="dropdown3.php" method="post">
+
+    <!-- <form name="form1" action="dropdown3.php" method="post"> -->
     <p class="mannaka">片道<input type="number" name="trafic" value="195">円</p>
     <p class="mannaka">時給<input type="number" name="perh" value="1160">円</p>
 
-<form action="dropdown3.php" method="post">
+<!-- <form action="dropdown3.php" method="post"> -->
 <div class="mannaka"><button class="output_b" type="submit">出力する</button></div>
 </form>
     
