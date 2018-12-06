@@ -32,10 +32,10 @@ for($a = 0; $a <35; $a++){
         $difOut = $checkOut - $sCheckOut;
         $difOut /= 0.6;
         $checkOut = $sCheckOut + $difOut;
-        echo "checkIn=".$checkIn;
-        echo "<br>";
-        echo "checkOut=".$checkOut;
-        echo "<br>";
+        // echo "checkIn=".$checkIn;
+        // echo "<br>";
+        // echo "checkOut=".$checkOut;
+        // echo "<br>";
         if($checkOut > $checkIn){
             //休憩の計算
             $worktime = $checkOut - $checkIn;
@@ -51,7 +51,7 @@ for($a = 0; $a <35; $a++){
             if(22 < $checkOut){    //深夜時間も働いた場合
                 $sarary += (22 - $checkIn - $break) * $perh + ($checkOut - 22) * 1.25 * $perh;
                 
-                echo "sarary=".$sarary;
+                // echo "sarary=".$sarary;
             }
             else{   //そうでない場合
                 $sarary += ($checkOut - $checkIn - $break) * $perh;
